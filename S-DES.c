@@ -1,6 +1,7 @@
 #include <stdio.h>
 int key[11] = {1,0,1,0,0,0,0,0,1,0}, key_p10[11], key_p10_LS1[11], key_p10_LS2[11], subkey1[9], 
-subkey2[9], plaintext[9] = {1,2,3,4,5,6,7,8}, left[5], right[5], ciphertext[9], iptext[9], inverse_ip[9];
+subkey2[9], plaintext[9] = {1,2,3,4,5,6,7,8}, left[5], right[5], ciphertext[9], iptext[9], 
+inverse_ip[9], xor_result[5], first[5] = {1,0,0,1}, second[5] = {0,1,0,1};
 void P10(int key[], int key_p10[]){
 	int i;
 	printf("P10 working...");
@@ -128,10 +129,24 @@ void Inverse_IP(int text[]){
 		printf("%d", inverse_ip[i]);
 	}
 }
+void XOR(int first[], int second[]){
+	printf("\n\n");
+	printf("Prueba XOR...");
+	printf("\n\n");
+	int i;
+	for(i=0;i<4;i++){
+		if(first[i] != second[i])
+			xor_result[i] = 1;
+		else
+			xor_result[i] = 0;
+		printf("%d", xor_result[i]);
+	}
+}
 int main(){
 	SubkeyGeneration(key);
 	IP(plaintext);
 	Inverse_IP(iptext);
+	XOR(first, second);
 	return 0;
 }
 
