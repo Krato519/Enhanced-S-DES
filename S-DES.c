@@ -1,6 +1,6 @@
 #include <stdio.h>
 int main(){
-	int key[11] = {1,0,1,0,0,0,0,0,1,0}, key_p10[11], key_p10_LS1[11], key_p10_LS2[11];
+	int key[11] = {1,0,1,0,0,0,0,0,1,0}, key_p10[11], key_p10_LS1[11], key_p10_LS2[11], subkey1[9], subkey2[9];
 	int i;
 	for(i=0;i<10;i++){
 		printf("%d", key[i]);	
@@ -10,6 +10,12 @@ int main(){
 	printf("\n\n");
 	for(i=0;i<10;i++){
 		printf("%d", key_p10[i]);	
+	}
+	printf("\n\n");
+	LS_1(key_p10, key_p10_LS1);
+	printf("\n\n");
+	for(i=0;i<10;i++){
+		printf("%d", key_p10_LS1[i]);	
 	}
 	return 0;
 }
@@ -28,8 +34,19 @@ void P10(int key[], int key_p10[]){
 	key_p10[9] = key[5];
 }
 
-void LS_1(int key_p10[]){
-	
+void LS_1(int key_p10[], int key_p10_LS1[]){
+	printf("LS1 working...");
+	int temp, i;
+	temp = key_p10[0];
+	for(i=0; i<4; i++){
+		key_p10_LS1[i] = key_p10[i+1];
+	}
+	key_p10_LS1[4] = temp;
+	temp = key_p10[5];
+	for(i=5; i<9; i++){
+		key_p10_LS1[i] = key_p10[i+1];
+	}
+	key_p10_LS1[9] = temp;
 }
 
 
