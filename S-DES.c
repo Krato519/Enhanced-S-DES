@@ -1,4 +1,5 @@
 #include <stdio.h>
+int key[11] = {1,0,1,0,0,0,0,0,1,0}, key_p10[11], key_p10_LS1[11], key_p10_LS2[11], subkey1[9], subkey2[9];
 void P10(int key[], int key_p10[]){
 	int i;
 	printf("P10 working...");
@@ -75,9 +76,7 @@ void P8(int key[], int subkey[]){
 		printf("%d", subkey[i]);	
 	}
 }
-
-int main(){
-	int key[11] = {1,0,1,0,0,0,0,0,1,0}, key_p10[11], key_p10_LS1[11], key_p10_LS2[11], subkey1[9], subkey2[9];
+void SubkeyGeneration(int key[]){
 	int i;
 	printf("Original key:\n\n");
 	for(i=0;i<10;i++){
@@ -94,6 +93,9 @@ int main(){
 	printf("\n\n");
 	P8(key_p10_LS2, subkey2);
 	printf("\n\n");
+}
+int main(){
+	SubkeyGeneration(key);
 	return 0;
 }
 
