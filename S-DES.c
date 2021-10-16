@@ -1,5 +1,6 @@
 #include <stdio.h>
-int key[11] = {1,0,1,0,0,0,0,0,1,0}, key_p10[11], key_p10_LS1[11], key_p10_LS2[11], subkey1[9], subkey2[9], plaintext[9] = {1,2,3,4,5,6,7,8}, left[5], right[5], ciphertext[9], iptext[9];
+int key[11] = {1,0,1,0,0,0,0,0,1,0}, key_p10[11], key_p10_LS1[11], key_p10_LS2[11], subkey1[9], 
+subkey2[9], plaintext[9] = {1,2,3,4,5,6,7,8}, left[5], right[5], ciphertext[9], iptext[9], inverse_ip[9];
 void P10(int key[], int key_p10[]){
 	int i;
 	printf("P10 working...");
@@ -110,9 +111,27 @@ void IP(int text[]){
 		printf("%d", iptext[i]);
 	}
 }
+void Inverse_IP(int text[]){
+	printf("\n\n");
+	printf("Undoing initial permutation...");
+	int i;
+	inverse_ip[0] = text[3];
+	inverse_ip[1] = text[0];
+	inverse_ip[2] = text[2];
+	inverse_ip[3] = text[4];
+	inverse_ip[4] = text[6];
+	inverse_ip[5] = text[1];
+	inverse_ip[6] = text[7];
+	inverse_ip[7] = text[5];
+	printf("\n\n");
+	for(i=0;i<8;i++){
+		printf("%d", inverse_ip[i]);
+	}
+}
 int main(){
 	SubkeyGeneration(key);
 	IP(plaintext);
+	Inverse_IP(iptext);
 	return 0;
 }
 
