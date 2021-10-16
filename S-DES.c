@@ -142,11 +142,32 @@ void XOR(int first[], int second[]){
 		printf("%d", xor_result[i]);
 	}
 }
+void SW(int text[]){
+	printf("\n\n");
+	printf("Switch operation working...");
+	int temp[5], i;
+	temp[0] = text[0];
+	temp[1] = text[1];
+	temp[2] = text[2];
+	temp[3] = text[3];
+	for(i=0;i<4;i++){
+		text[i] = text[i+4];
+	}
+	text[4] = temp[0];
+	text[5] = temp[1];
+	text[6] = temp[2];
+	text[7] = temp[3];
+	printf("\n\n");
+	for(i=0;i<8;i++){
+		printf("%d", text[i]);
+	}
+}
 int main(){
 	SubkeyGeneration(key);
 	IP(plaintext);
 	Inverse_IP(iptext);
 	XOR(first, second);
+	SW(plaintext);
 	return 0;
 }
 
