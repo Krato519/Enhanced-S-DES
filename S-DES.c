@@ -17,6 +17,12 @@ int main(){
 	for(i=0;i<10;i++){
 		printf("%d", key_p10_LS1[i]);	
 	}
+	printf("\n\n");
+	LS_2(key_p10_LS1, key_p10_LS2);
+	printf("\n\n");
+	for(i=0;i<10;i++){
+		printf("%d", key_p10_LS2[i]);	
+	}
 	return 0;
 }
 
@@ -47,6 +53,25 @@ void LS_1(int key_p10[], int key_p10_LS1[]){
 		key_p10_LS1[i] = key_p10[i+1];
 	}
 	key_p10_LS1[9] = temp;
+}
+
+void LS_2(int key_p10_LS1[], int key_p10_LS2[]){
+	printf("LS2 working...");
+	int temp1, temp2, i;
+	temp1 = key_p10_LS1[0];
+	temp2 = key_p10_LS1[1];
+	for(i=0; i<3; i++){
+		key_p10_LS2[i] = key_p10_LS1[i+2];
+	}
+	key_p10_LS2[3] = temp1;
+	key_p10_LS2[4] = temp2;
+	temp1 = key_p10_LS1[5];
+	temp2 = key_p10_LS1[6];
+	for(i=5; i<8; i++){
+		key_p10_LS2[i] = key_p10_LS1[i+2];
+	}
+	key_p10_LS2[8] = temp1;
+	key_p10_LS2[9] = temp2;
 }
 
 
