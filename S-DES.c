@@ -286,7 +286,7 @@ void F_mapping(int R[], int SK[]){
 	P4(Sbox_result);
 }
 
-int main(){
+void Encrypt(){
 	int i;
 	SubkeyGeneration(key);
 	IP(plaintext);
@@ -299,7 +299,11 @@ int main(){
 	for(i=0;i<8;i++){
 		printf("%d", inverse_ip[i]);
 	}
-	printf("\n\n");
+}
+
+void Decrypt(){
+	int i;
+	SubkeyGeneration(key);
 	IP(inverse_ip);
 	fk(iptext, subkey2);
 	SW(ciphertext);
@@ -310,6 +314,11 @@ int main(){
 	for(i=0;i<8;i++){
 		printf("%d", inverse_ip[i]);
 	}
+}
+int main(){
+	Encrypt();
+	printf("\n\n");
+	Decrypt();
 	//Inverse_IP(iptext);
 	//XOR(first, second);
 	//SW(plaintext); 
