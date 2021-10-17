@@ -1,0 +1,122 @@
+#include <stdio.h>
+int binary[9];
+void ToBinary(char letter){
+	switch (letter){
+		case 'A': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 0;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'B': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 0;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'C': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 0;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'D': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 1;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'E': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 1;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'F': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 1;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'G': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 1;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'H': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 1;binary[5] = 0;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'I': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 1;binary[5] = 0;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'J': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 1;binary[5] = 0;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'K': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 1;binary[5] = 0;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'L': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 1;binary[5] = 1;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'M': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 1;binary[5] = 1;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'N': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 1;binary[5] = 1;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'O': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 1;binary[5] = 1;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'P': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 0;binary[5] = 0;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'Q': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 0;binary[5] = 0;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'R': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 0;binary[5] = 0;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'S': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 0;binary[5] = 0;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'T': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 0;binary[5] = 1;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'U': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 0;binary[5] = 1;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'V': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 0;binary[5] = 1;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'W': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 0;binary[5] = 1;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'X': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 1;binary[5] = 0;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'Y': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 1;binary[5] = 0;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'Z': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 1;binary[4] = 1;binary[5] = 0;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'a': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 0;binary[5] = 0;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'b': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 0;binary[5] = 0;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'c': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 0;binary[5] = 0;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'd': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 0;binary[5] = 1;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'e': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 0;binary[5] = 1;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'f': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 0;binary[5] = 1;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'g': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 0;binary[5] = 1;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'h': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 1;binary[5] = 0;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'i': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 1;binary[5] = 0;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'j': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 1;binary[5] = 0;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'k': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 1;binary[5] = 0;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'l': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 1;binary[5] = 1;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'm': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 1;binary[5] = 1;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'n': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 1;binary[5] = 1;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'o': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 0;binary[4] = 1;binary[5] = 1;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'p': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 0;binary[5] = 0;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'q': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 0;binary[5] = 0;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'r': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 0;binary[5] = 0;binary[6] = 1;binary[7] = 0;
+					break;
+		case 's': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 0;binary[5] = 0;binary[6] = 1;binary[7] = 1;
+					break;
+		case 't': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 0;binary[5] = 1;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'u': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 0;binary[5] = 1;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'v': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 0;binary[5] = 1;binary[6] = 1;binary[7] = 0;
+					break;
+		case 'w': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 0;binary[5] = 1;binary[6] = 1;binary[7] = 1;
+					break;
+		case 'x': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 1;binary[5] = 0;binary[6] = 0;binary[7] = 0;
+					break;
+		case 'y': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 1;binary[5] = 0;binary[6] = 0;binary[7] = 1;
+					break;
+		case 'z': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 1;binary[5] = 0;binary[6] = 1;binary[7] = 0;
+					break;
+		default :	printf("Letter not recognized.");
+					
+	}
+}
+
+int main(){
+	int i;
+	char letter = 'z';
+	ToBinary(letter);
+	for(i=0;i<8;i++){
+		printf("%d", binary[i]);
+	}
+	return 0;
+}
