@@ -304,10 +304,10 @@ void Encrypt(int text[]){
 	}
 }
 
-void Decrypt(){
+void Decrypt(int text[]){
 	int i;
 	SubkeyGeneration(key);
-	IP(inverse_ip);
+	IP(text);
 	fk(iptext, subkey2);
 	SW(ciphertext);
 	fk(ciphertext, subkey1);
@@ -321,7 +321,7 @@ void Decrypt(){
 int main(){
 	Encrypt(text);
 	printf("\n\n");
-	Decrypt();
+	Decrypt(inverse_ip);
 	//Inverse_IP(iptext);
 	//XOR(first, second);
 	//SW(plaintext); 
