@@ -1,10 +1,10 @@
 #include <stdio.h>
 int key[11] = {0,1,0,0,0,0,0,0,0,1}, key_p10[11], key_p10_LS1[11], key_p10_LS2[11], subkey1[9], 
-subkey2[9], plaintext[9] = {1,0,0,1,1,0,0,1}, left[5], right[5], ciphertext[9], iptext[9], 
+subkey2[9], plaintext[9], left[5], right[5], ciphertext[9], iptext[9], 
 inverse_ip[9], xor_result[5], first[5], second[5], map_result[5], expansion[9], 
 SK_add1[5], SK_add2[5], S0[5][5]={{1,0,3,2},{3,2,1,0},{0,2,1,3},{3,1,3,2}},
 S1[5][5]={{0,1,2,3},{2,0,1,3},{3,0,1,0},{2,1,0,3}}, row, column, Sbox_result[5], s_decimal, s_binary[3];
-
+int text[9] = {0,1,0,0,0,0,0,1};
 void P10(int key[], int key_p10[]){
 	int i;
 	printf("P10 working...");
@@ -286,8 +286,11 @@ void F_mapping(int R[], int SK[]){
 	P4(Sbox_result);
 }
 
-void Encrypt(){
+void Encrypt(int text[]){
 	int i;
+	for(i=0;i<8;i++){
+		plaintext[i] = text[i];
+	}
 	SubkeyGeneration(key);
 	IP(plaintext);
 	fk(iptext, subkey1);
@@ -316,7 +319,7 @@ void Decrypt(){
 	}
 }
 int main(){
-	Encrypt();
+	Encrypt(text);
 	printf("\n\n");
 	Decrypt();
 	//Inverse_IP(iptext);
