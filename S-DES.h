@@ -308,7 +308,7 @@ void F_mapping(int R[], int SK[]){
 	P4(Sbox_result);
 }
 
-void Encrypt(int text[]){
+void Encrypt(int text[], int result[]){
 	int i;
 	for(i=0;i<8;i++){
 		plaintext[i] = text[i];
@@ -323,10 +323,11 @@ void Encrypt(int text[]){
 	printf("Ciphertext:\t");
 	for(i=0;i<8;i++){
 		printf("%d", inverse_ip[i]);
+		result[i] = inverse_ip[i];
 	}
 }
 
-void Decrypt(int text[]){
+void Decrypt(int text[], int result[]){
 	int i;
 	SubkeyGeneration(key);
 	IP(text);
@@ -338,6 +339,7 @@ void Decrypt(int text[]){
 	printf("Plaintext:\t");
 	for(i=0;i<8;i++){
 		printf("%d", inverse_ip[i]);
+		result[i] = inverse_ip[i];
 	}
 }
 
