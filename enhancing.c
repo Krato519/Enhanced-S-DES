@@ -16,11 +16,9 @@ int main () {
    gets(text);
 
    plain_text = plain(text);
-   text = sctt(plain_text);
-   plain_text = plain(text);
-   text = sctt(plain_text);
-   plain_text = plain(text);
-   text = srs(plain_text);
+   plain_text = sctt(plain_text);
+   plain_text = sctt(plain_text);
+   plain_text = srs(plain_text);
 
    return 0;
 }
@@ -65,10 +63,23 @@ char* sctt(char* plain_text) {
    }
    *(cipher_text+i) = '\0';
 
+   puts("Table for columnar transposition");
+   for (int x = 0; x < rows; x++) {
+      for (int y = 0; y < cols; y++) {
+         printf("%c ",grid[x][y]);
+      }
+      printf("\n");
+   }
+
+   puts("");
+   puts("Simple Columnar Transposition Technique");
+   puts(cipher_text);
+   puts("");
+
    return cipher_text;
 }
 
-char* srs(char* plain_text){
+char* srs(char* plain_text) {
 
    unsigned int rows = 3;
    unsigned int cols = 1+((strlen(plain_text)-1)/rows);
@@ -78,20 +89,18 @@ char* srs(char* plain_text){
    i = k = 0;
    row = (char*)malloc((cols+1) * sizeof(char));
    cipher_text = (char*)malloc(strlen(plain_text) * sizeof(char));
+   puts("Table with shifted rows");
    for (int y = 0; y < rows; y++) {
       for (int x = 0; x < cols; x++) {
-         if (plain_text[i] != ' '){
-            *(row+x) = plain_text[i];
-            i++;
-         }
-         if (x == cols-1 || plain_text[i] == '\0'){
+         *(row+x) = plain_text[i];
+         i++;
+         if (x == cols-1 || plain_text[i] == '\0') {
             *(row+(x+1)) = '\0';
             break;
          }
       }
 
-      switch (y)
-      {
+      switch (y) {
          case 1:
             temp = row[0];
             for (int j = 0; j < strlen(row); j++)
@@ -100,29 +109,40 @@ char* srs(char* plain_text){
             break;
          case 2:
             temp = row[strlen(row)-1];
-            for (int j = strlen(row)-1; j > 0; j--)
+            for (int j = strlen(row)-1; j > 0; j--){
                row[j] = row[j - 1];
+            }
             row[0] = temp;
             break;
          default:
             break;
       }
 
-      for (int j=0;j<strlen(row);j++){
+      for (int j=0;j<strlen(row);j++) {
+         printf("%c ",row[j]);
+      }
+      printf("\n");
+
+      for (int j=0;j<strlen(row);j++) {
          *(cipher_text+k) = row[j];
          k++;
       }
 
-      if (plain_text[i] == '\0'){
+      if (plain_text[i] == '\0') {
          break;
       }
    }
    *(cipher_text+k) = '\0';
 
+   puts("");
+   puts("Shift Rows Stage");
+   puts(cipher_text);
+   puts("");
+
    return cipher_text;
 }
 
-char* plain(char* text){
+char* plain(char* text) {
 
    char *plain_text;
    int j = 0;
@@ -145,6 +165,11 @@ char* plain(char* text){
       }
    }
    *(plain_text+j) = '\0';
+
+   puts("");
+   puts("Plained text");
+   puts(plain_text);
+   puts("");
 
    return plain_text;
 }
