@@ -227,6 +227,7 @@ char ToLetter(int binary[]){
 						break;
 		default:		printf("No valid code.");
 	}
+	selection = 0;
 	return character;
 }
 

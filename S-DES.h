@@ -7,7 +7,7 @@ S1[5][5]={{0,1,2,3},{2,0,1,3},{3,0,1,0},{2,1,0,3}}, row, column, Sbox_result[5],
 int text[9] = {0,1,0,0,0,0,0,1};
 void P10(int key[], int key_p10[]){
 	int i;
-	printf("P10 working...");
+	//printf("P10 working...");
 	key_p10[0] = key[2];
 	key_p10[1] = key[4];
 	key_p10[2] = key[1];
@@ -18,14 +18,14 @@ void P10(int key[], int key_p10[]){
 	key_p10[7] = key[8];
 	key_p10[8] = key[7];
 	key_p10[9] = key[5];
-	printf("\n\n");
-	for(i=0;i<10;i++){
+	//printf("\n\n");
+	/*for(i=0;i<10;i++){
 		printf("%d", key_p10[i]);	
-	}
+	}*/
 }
 
 void LS_1(int key_p10[], int key_p10_LS1[]){
-	printf("LS1 working...");
+	//printf("LS1 working...");
 	int temp, i;
 	temp = key_p10[0];
 	for(i=0; i<4; i++){
@@ -37,14 +37,14 @@ void LS_1(int key_p10[], int key_p10_LS1[]){
 		key_p10_LS1[i] = key_p10[i+1];
 	}
 	key_p10_LS1[9] = temp;
-	printf("\n\n");
-	for(i=0;i<10;i++){
+	//printf("\n\n");
+	/*for(i=0;i<10;i++){
 		printf("%d", key_p10_LS1[i]);	
-	}
+	}*/
 }
 
 void LS_2(int key_p10_LS1[], int key_p10_LS2[]){
-	printf("LS2 working...");
+	//printf("LS2 working...");
 	int temp1, temp2, i;
 	temp1 = key_p10_LS1[0];
 	temp2 = key_p10_LS1[1];
@@ -60,15 +60,15 @@ void LS_2(int key_p10_LS1[], int key_p10_LS2[]){
 	}
 	key_p10_LS2[8] = temp1;
 	key_p10_LS2[9] = temp2;
-	printf("\n\n");
-	for(i=0;i<10;i++){
+	//printf("\n\n");
+	/*for(i=0;i<10;i++){
 		printf("%d", key_p10_LS2[i]);	
-	}
+	}*/
 }
 
 void P8(int key[], int subkey[]){
 	int i;
-	printf("Generating subkey");
+	//printf("Generating subkey");
 	subkey[0] = key[5];
 	subkey[1] = key[2];
 	subkey[2] = key[6];
@@ -77,33 +77,33 @@ void P8(int key[], int subkey[]){
 	subkey[5] = key[4];
 	subkey[6] = key[9];
 	subkey[7] = key[8];
-	printf("\n\n");
-	for(i=0;i<8;i++){
+	//printf("\n\n");
+	/*for(i=0;i<8;i++){
 		printf("%d", subkey[i]);	
-	}
+	}*/
 }
 
 void SubkeyGeneration(int key[]){
 	int i;
-	printf("Original key:\n\n");
-	for(i=0;i<10;i++){
+	//printf("Original key:\n\n");
+	/*for(i=0;i<10;i++){
 		printf("%d", key[i]);	
-	}
-	printf("\n\n");
+	}*/
+	//printf("\n\n");
 	P10(key, key_p10);
-	printf("\n\n");
+	//printf("\n\n");
 	LS_1(key_p10, key_p10_LS1);
-	printf("\n\n");
+	//printf("\n\n");
 	LS_2(key_p10_LS1, key_p10_LS2);
-	printf("\n\n");
+	//printf("\n\n");
 	P8(key_p10_LS1, subkey1);
-	printf("\n\n");
+	//printf("\n\n");
 	P8(key_p10_LS2, subkey2);
-	printf("\n\n");
+	//printf("\n\n");
 }
 
 void IP(int text[]){
-	printf("Initial permutation...");
+	//printf("Initial permutation...");
 	int i;
 	iptext[0] = text[1];
 	iptext[1] = text[5];
@@ -113,15 +113,15 @@ void IP(int text[]){
 	iptext[5] = text[7];
 	iptext[6] = text[4];
 	iptext[7] = text[6];
-	printf("\n\n");
-	for(i=0;i<8;i++){
+	//printf("\n\n");
+	/*for(i=0;i<8;i++){
 		printf("%d", iptext[i]);
-	}
+	}*/
 }
 
 void Inverse_IP(int text[]){
-	printf("\n\n");
-	printf("Undoing initial permutation...");
+	//printf("\n\n");
+	//printf("Undoing initial permutation...");
 	int i;
 	inverse_ip[0] = text[3];
 	inverse_ip[1] = text[0];
@@ -131,10 +131,10 @@ void Inverse_IP(int text[]){
 	inverse_ip[5] = text[1];
 	inverse_ip[6] = text[7];
 	inverse_ip[7] = text[5];
-	printf("\n\n");
-	for(i=0;i<8;i++){
+	//printf("\n\n");
+	/*for(i=0;i<8;i++){
 		printf("%d", inverse_ip[i]);
-	}
+	}*/
 }
 
 void XOR(int first[], int second[]){
@@ -148,8 +148,8 @@ void XOR(int first[], int second[]){
 }
 
 void SW(int text[]){
-	printf("\n\n");
-	printf("Switch operation working...");
+	//printf("\n\n");
+	//printf("Switch operation working...");
 	int temp[5], i;
 	temp[0] = text[0];
 	temp[1] = text[1];
@@ -162,44 +162,14 @@ void SW(int text[]){
 	text[5] = temp[1];
 	text[6] = temp[2];
 	text[7] = temp[3];
-	printf("\n\n");
-	for(i=0;i<8;i++){
+	//printf("\n\n");
+	/*for(i=0;i<8;i++){
 		printf("%d", text[i]);
-	}
+	}*/
 }
-
-void fk(int iptext[], int subkey[]){
-	printf("\n\n");
-	printf("fk function being applied...");
-	int i;
-	for(i=0;i<4;i++){
-		first[i] = iptext[i];
-	}
-	for(i=0;i<4;i++){
-		second[i] = iptext[i+4];
-	}
-	F_mapping(second, subkey);
-	XOR(first, map_result);
-	for(i=0;i<4;i++){
-		first[i] = xor_result[i];
-	}
-	for(i=0;i<8;i++){
-		if(i<4)
-			ciphertext[i] = first[i];
-		else
-			ciphertext[i] = second[i-4];
-	}
-	printf("\n\n");
-	printf("fk result:");
-	printf("\n\n");	  
-	for(i=0;i<8;i++){
-		printf("%d", ciphertext[i]);
-	}
-}
-
 void EP(int expansion[], int R[]){
 	int i;
-	printf("\n\nExpanding Right side...");
+	//printf("\n\nExpanding Right side...");
     expansion[0] = R[3];
     expansion[1] = R[0];
     expansion[2] = R[1];
@@ -208,12 +178,11 @@ void EP(int expansion[], int R[]){
     expansion[5] = R[2];
     expansion[6] = R[3];
     expansion[7] = R[0];
-    printf("\n\n");
-    for(i=0;i<8;i++){
+    //printf("\n\n");
+    /*for(i=0;i<8;i++){
     	printf("%d", expansion[i]);
-	}
+	}*/
 }
-
 void binaryTodecimal(int binary[]){
 		if(binary[0] == 0){
 			if(binary[3] == 0){
@@ -258,20 +227,19 @@ void decimalToBinary(int decimal){
 }
 
 void P4(int sbox[]){
-	printf("\n\nPermutating sbox result values...");
+	//printf("\n\nPermutating sbox result values...");
 	int i;
 	map_result[0] = sbox[1];
 	map_result[1] = sbox[3];
 	map_result[2] = sbox[2];
 	map_result[3] = sbox[0];
-	printf("\n\n");
+	/*printf("\n\n");
 	printf("F mapping result:");
 	printf("\n\n");
 	for(i=0;i<4;i++){
 		printf("%d",map_result[i]);
-	}
+	}*/
 }
-
 void F_mapping(int R[], int SK[]){
 	int xor1[5], xor2[5], xor_subkey1[5], xor_subkey2[5], i;
 	EP(expansion, R);
@@ -307,7 +275,34 @@ void F_mapping(int R[], int SK[]){
 	Sbox_result[3] = s_binary[1];
 	P4(Sbox_result);
 }
-
+void fk(int iptext[], int subkey[]){
+	//printf("\n\n");
+	//printf("fk function being applied...");
+	int i;
+	for(i=0;i<4;i++){
+		first[i] = iptext[i];
+	}
+	for(i=0;i<4;i++){
+		second[i] = iptext[i+4];
+	}
+	F_mapping(second, subkey);
+	XOR(first, map_result);
+	for(i=0;i<4;i++){
+		first[i] = xor_result[i];
+	}
+	for(i=0;i<8;i++){
+		if(i<4)
+			ciphertext[i] = first[i];
+		else
+			ciphertext[i] = second[i-4];
+	}
+	/*printf("\n\n");
+	printf("fk result:");
+	printf("\n\n");	  
+	for(i=0;i<8;i++){
+		printf("%d", ciphertext[i]);
+	}*/
+}
 void Encrypt(int text[], int result[]){
 	int i;
 	for(i=0;i<8;i++){
