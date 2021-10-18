@@ -2,20 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
  
-/* function returning the Simple Columnar Transposition Cipher Text */
+/* Simple Columnar Transposition Technique */
 char* sctt(char* plain_text) {
 
+   /* Variables for table, transposition and cipher text */
    unsigned int cols = 3;
    unsigned int rows = 1+((strlen(plain_text)-1)/cols);
    const unsigned int transposition[3] = {1,2,0};
    char *cipher_text, **grid;
    int i;
 
+   /* Initialization of 2D array for transposition table  */
    grid = (char**)malloc(rows * sizeof(char*));
    for (int i = 0; i < rows; i++){
       grid[i] = (char*)malloc(cols * sizeof(char));
    }
 
+   /* Setting of transposition table */
    i = 0;
    for (int x = 0; x < rows; x++) {
       for (int y = 0; y < cols; y++) {
@@ -29,8 +32,10 @@ char* sctt(char* plain_text) {
       }
    }
 
+   /* Inicialization of array for Cipher text */
    cipher_text = (char*)malloc(sizeof(char)*strlen(plain_text));
 
+   /* Setting of Cipher text */
    i = 0;
    for (int y = 0; y < cols; y++) {
       for (int x = 0; x < rows; x++) {
@@ -42,6 +47,7 @@ char* sctt(char* plain_text) {
    }
    *(cipher_text+i) = '\0';
 
+   /* Printing of Transposition table */
    puts("Table for columnar transposition");
    for (int x = 0; x < rows; x++) {
       for (int y = 0; y < cols; y++) {
@@ -50,6 +56,7 @@ char* sctt(char* plain_text) {
       printf("\n");
    }
 
+   /* Printing of Cipher text */
    puts("");
    puts("Simple Columnar Transposition Technique");
    puts(cipher_text);
@@ -58,18 +65,29 @@ char* sctt(char* plain_text) {
    return cipher_text;
 }
 
+/* Shift Row Stage */
 char* srs(char* plain_text) {
 
+   /* Variables for rows and cipher text */
    unsigned int rows = 3;
    unsigned int cols = 1+((strlen(plain_text)-1)/rows);
    char *cipher_text, *row, temp;
    int i,k;
 
-   i = k = 0;
-   row = (char*)malloc((cols+1) * sizeof(char));
+   /* Table is not actually created but its 3 rows as separated strings */
+
+   /* Inicialization of array for rows creation and array for Cipher text */
    cipher_text = (char*)malloc(strlen(plain_text) * sizeof(char));
+   row = (char*)malloc((cols+1) * sizeof(char));
+   
+   /* Part of the printing of the table representation*/
    puts("Table with shifted rows");
+   
+   /* Setting loop */
+   i = k = 0;
    for (int y = 0; y < rows; y++) {
+
+      /* Setting of rows */
       for (int x = 0; x < cols; x++) {
          *(row+x) = plain_text[i];
          i++;
@@ -79,6 +97,7 @@ char* srs(char* plain_text) {
          }
       }
 
+      /* Shifting of rows */
       switch (y) {
          case 1:
             temp = row[0];
@@ -97,22 +116,26 @@ char* srs(char* plain_text) {
             break;
       }
 
+      /* Printing of table representation */
       for (int j=0;j<strlen(row);j++) {
          printf("%c ",row[j]);
       }
       printf("\n");
 
+      /* Setting of Cipher text */
       for (int j=0;j<strlen(row);j++) {
          *(cipher_text+k) = row[j];
          k++;
       }
 
+      /* Breaking loop when 3 rows have been processed */
       if (plain_text[i] == '\0') {
          break;
       }
    }
    *(cipher_text+k) = '\0';
 
+   /* Printing of Cipher text */
    puts("");
    puts("Shift Rows Stage");
    puts(cipher_text);
@@ -121,12 +144,17 @@ char* srs(char* plain_text) {
    return cipher_text;
 }
 
+/* Text plaining */
 char* plain(char* text) {
 
+   /* Variables for plain text */
    char *plain_text;
    int j = 0;
 
+   /* Inicialization of array for Plain text */
    plain_text = (char*)malloc(sizeof(char)*strlen(text));
+
+   /* Setting of Plain text */
    for (int i=0;i<strlen(text);i++){
       if (
          text[i] != ' ' && 
@@ -145,6 +173,7 @@ char* plain(char* text) {
    }
    *(plain_text+j) = '\0';
 
+   /* Printing of Plain text */
    puts("");
    puts("Plained text");
    puts(plain_text);
