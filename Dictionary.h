@@ -1,7 +1,6 @@
 #include <stdio.h>
-int binary[9], selection;
-char character;
-void ToBinary(char letter){
+int selection;
+void ToBinary(char letter, int binary[]){
 	switch (letter){
 		case 'A': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 0;binary[6] = 0;binary[7] = 1;
 					break;
@@ -111,7 +110,8 @@ void ToBinary(char letter){
 	}
 }
 
-void ToLetter(int binary[]){
+char ToLetter(int binary[]){
+	char character;
 	selection += binary[7];
 	selection += binary[6]*10;
 	selection += binary[5]*100;
@@ -119,6 +119,7 @@ void ToLetter(int binary[]){
 	selection += binary[3]*10000;
 	selection += binary[2]*100000;
 	selection += binary[1]*1000000;
+	printf("Selection: %d\n", selection);
 	switch(selection){
 		case 1000001:	character = 'A';
 						break;
@@ -224,6 +225,8 @@ void ToLetter(int binary[]){
 						break;
 		case 1111010:	character = 'z';
 						break;
+		default:		printf("No valid code.");
 	}
+	return character;
 }
 
