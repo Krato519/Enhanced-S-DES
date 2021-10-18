@@ -15,6 +15,9 @@ int main () {
    plain_text = sctt(plain_text);
    plain_text = sctt(plain_text);
    plain_text = srs(plain_text);
+   plain_text = inv_srs(plain_text);
+   plain_text = inv_sctt(plain_text);
+   plain_text = inv_sctt(plain_text);
 
    return 0;
 }

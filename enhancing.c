@@ -181,3 +181,153 @@ char* plain(char* text) {
 
    return plain_text;
 }
+
+/* Inverse Shift Row Stage */
+char* inv_srs(char* cipher_text) {
+
+   /* Variables for rows and cipher text */
+   unsigned int rows = 3;
+   unsigned int cols = 1+((strlen(cipher_text)-1)/rows);
+   char *plain_text, *row, temp;
+   int i,k;
+
+   /* Table is not actually created but its 3 rows as separated strings */
+
+   /* Inicialization of array for rows creation and array for Cipher text */
+   plain_text = (char*)malloc(strlen(cipher_text) * sizeof(char));
+   row = (char*)malloc((cols+1) * sizeof(char));
+   
+   /* Part of the printing of the table representation*/
+   puts("Table without shifted rows");
+   
+   /* Setting loop */
+   i = k = 0;
+   for (int y = 0; y < rows; y++) {
+
+      /* Setting of rows */
+      for (int x = 0; x < cols; x++) {
+         *(row+x) = cipher_text[i];
+         i++;
+         if (x == cols-1 || cipher_text[i] == '\0') {
+            *(row+(x+1)) = '\0';
+            break;
+         }
+      }
+
+      /* Shifting of rows */
+      switch (y) {
+         case 1:
+            temp = row[strlen(row)-1];
+            for (int j = strlen(row)-1; j > 0; j--){
+               row[j] = row[j - 1];
+            }
+            row[0] = temp;
+            break;
+         case 2:
+            temp = row[0];
+            for (int j = 0; j < strlen(row); j++)
+               row[j] = row[j + 1];
+            row[strlen(row)] = temp;
+            break;
+         default:
+            break;
+      }
+
+      /* Printing of table representation */
+      for (int j=0;j<strlen(row);j++) {
+         printf("%c ",row[j]);
+      }
+      printf("\n");
+
+      /* Setting of Cipher text */
+      for (int j=0;j<strlen(row);j++) {
+         *(plain_text+k) = row[j];
+         k++;
+      }
+
+      /* Breaking loop when 3 rows have been processed */
+      if (cipher_text[i] == '\0') {
+         break;
+      }
+   }
+   *(plain_text+k) = '\0';
+
+   /* Printing of Cipher text */
+   puts("");
+   puts("Inverse Shift Rows Stage");
+   puts(plain_text);
+   puts("");
+
+   return plain_text;
+}
+
+/* Inverse Simple Columnar Transposition Technique */
+char* inv_sctt(char* cipher_text) {
+
+   /* Variables for table, transposition and cipher text */
+   unsigned int cols = 3;
+   unsigned int rows = 1+((strlen(cipher_text)-1)/cols);
+   const unsigned int transposition[3] = {1,2,0};
+   char *plain_text, **grid;
+   int i;
+
+   /* Initialization of 2D array for transposition table  */
+   grid = (char**)malloc(rows * sizeof(char*));
+   for (int i = 0; i < rows; i++){
+      grid[i] = (char*)malloc(cols * sizeof(char));
+   }
+
+   /* Setting of transposition table */
+   i = 0;
+   for (int y = 0; y < cols; y++) {
+      for (int x = 0; x < rows; x++) {
+         if (i<strlen(cipher_text)){
+            if (
+               strlen(cipher_text)%3!=0 && 
+               x==rows-1 && 
+               transposition[y] > strlen(cipher_text)%3-1
+            ) {
+               grid[x][transposition[y]] = ' ';
+            } else {
+               grid[x][transposition[y]] = cipher_text[i];
+               i++;
+            }
+         }
+         else{
+            grid[x][y] = ' ';
+         }
+      }
+   }
+
+   /* Inicialization of array for Cipher text */
+   plain_text = (char*)malloc(sizeof(char)*strlen(cipher_text));
+
+   /* Setting of Cipher text */
+   i = 0;
+   for (int x = 0; x < rows; x++) {
+      for (int y = 0; y < cols; y++) {
+         if (grid[x][y] != ' ' && i<strlen(cipher_text)){
+            *(plain_text+i) = grid[x][y];
+            i++;
+         }
+      }
+   }
+   *(plain_text+i) = '\0';
+
+   /* Printing of Transposition table */
+   puts("Table for inverse columnar transposition");
+   for (int x = 0; x < rows; x++) {
+      for (int y = 0; y < cols; y++) {
+         printf("%c ",grid[x][y]);
+      }
+      printf("\n");
+   }
+
+   /* Printing of Cipher text */
+   puts("");
+   puts("Inverse Simple Columnar Transposition Technique");
+   puts(plain_text);
+   puts("");
+
+   return plain_text;
+}
