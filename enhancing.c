@@ -12,7 +12,7 @@ int main () {
    char *text,*plain_text;
 
    printf( "Enter a value: ");
-   text = (char*)malloc(sizeof(char)*100);
+   text = (char*)malloc(sizeof(char)*500);
    gets(text);
 
    plain_text = plain(text);
@@ -21,7 +21,6 @@ int main () {
    text = sctt(plain_text);
    plain_text = plain(text);
    text = srs(plain_text);
-   puts(text);
 
    return 0;
 }
@@ -73,69 +72,52 @@ char* srs(char* plain_text){
 
    unsigned int rows = 3;
    unsigned int cols = 1+((strlen(plain_text)-1)/rows);
-   char *cipher_text, **grid, **shift_grid;
-   int i;
+   char *cipher_text, *row, temp;
+   int i,k;
 
-   grid = (char**)malloc(rows * sizeof(char*));
-   for (int i = 0; i < rows; i++){
-      grid[i] = (char*)malloc(cols * sizeof(char));
-   }
-
-   i = 0;
-   for (int x = 0; x < rows; x++) {
-      for (int y = 0; y < cols; y++) {
-         if (i<strlen(plain_text)){
-            grid[x][y] = plain_text[i];
-            i++;
-         } else {
-            grid[x][y] = ' ';
-         }
-      }
-   }
-
-   shift_grid = (char**)malloc(rows * sizeof(char*));
-   for (int i = 0; i < rows; i++){
-      shift_grid[i] = (char*)malloc(cols * sizeof(char));
-   }
-
-   for (int x = 0; x < rows; x++) {
-      for (int y = 0; y < cols; y++) {
-         switch (x){
-            case 0:
-               shift_grid[x][y] = grid[x][y];
-               break;
-            case 1:
-               if (y == cols-1){
-                  shift_grid[x][y] = grid[x][0];
-               } else {
-                  shift_grid[x][y] = grid[1][y+1];
-               }
-               break;
-            case 2:
-               if (y == 0){
-                  shift_grid[x][y] = grid[2][cols-1];
-               } else {
-                  shift_grid[x][y] = grid[2][y-1];
-               }
-               break;
-            default:
-               break;
-         }
-      }
-   }
-
-   cipher_text = (char*)malloc(sizeof(char)*strlen(plain_text));
-
-   i = 0;
-   for (int x = 0; x < rows; x++) {
-      for (int y = 0; y < cols; y++) {
-         if (shift_grid[x][y] != ' '){
-            *(cipher_text+i) = shift_grid[x][y];
+   i = k = 0;
+   row = (char*)malloc((cols+1) * sizeof(char));
+   cipher_text = (char*)malloc(strlen(plain_text) * sizeof(char));
+   for (int y = 0; y < rows; y++) {
+      for (int x = 0; x < cols; x++) {
+         if (plain_text[i] != ' '){
+            *(row+x) = plain_text[i];
             i++;
          }
+         if (x == cols-1 || plain_text[i] == '\0'){
+            *(row+(x+1)) = '\0';
+            break;
+         }
+      }
+
+      switch (y)
+      {
+         case 1:
+            temp = row[0];
+            for (int j = 0; j < strlen(row); j++)
+               row[j] = row[j + 1];
+            row[strlen(row)] = temp;
+            break;
+         case 2:
+            temp = row[strlen(row)-1];
+            for (int j = strlen(row)-1; j > 0; j--)
+               row[j] = row[j - 1];
+            row[0] = temp;
+            break;
+         default:
+            break;
+      }
+
+      for (int j=0;j<strlen(row);j++){
+         *(cipher_text+k) = row[j];
+         k++;
+      }
+
+      if (plain_text[i] == '\0'){
+         break;
       }
    }
-   *(cipher_text+i) = '\0';
+   *(cipher_text+k) = '\0';
 
    return cipher_text;
 }
