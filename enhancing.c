@@ -1,27 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-/* function declaration */
-char* sctt(char* plain_text);
-char* srs(char* plain_text);
-char* plain(char* text);
-
-int main () {
-
-   char *text,*plain_text;
-
-   printf( "Enter a value: ");
-   text = (char*)malloc(sizeof(char)*500);
-   gets(text);
-
-   plain_text = plain(text);
-   plain_text = sctt(plain_text);
-   plain_text = sctt(plain_text);
-   plain_text = srs(plain_text);
-
-   return 0;
-}
  
 /* function returning the Simple Columnar Transposition Cipher Text */
 char* sctt(char* plain_text) {
