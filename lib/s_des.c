@@ -338,5 +338,14 @@ void Decrypt(int text[], int result[]){
 	}
 }
 
-
-
+/*
+int main(){
+	Encrypt(text);
+	printf("\n\n");
+	Decrypt(inverse_ip);
+	//Inverse_IP(iptext);
+	//XOR(first, second);
+	//SW(plaintext); 
+	return 0;
+}
+*/

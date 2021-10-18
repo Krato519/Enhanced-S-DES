@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "S-DES.h"
-#include "Dictionary.h"
+#include "s_des.h"
+#include "dictionary.h"
 #include "enhancing.h"
 
 int main(){

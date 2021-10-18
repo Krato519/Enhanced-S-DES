@@ -231,3 +231,12 @@ char ToLetter(int binary[]){
 	return character;
 }
 
+/*
+int main(){
+	int i;
+	char letter = 'k';
+	ToBinary(letter);
+	ToLetter(binary);
+	return 0;
+}
+*/
