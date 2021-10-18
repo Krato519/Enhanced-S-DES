@@ -119,7 +119,6 @@ void ToLetter(int binary[]){
 	selection += binary[3]*10000;
 	selection += binary[2]*100000;
 	selection += binary[1]*1000000;
-	printf("\n\n");
 	switch(selection){
 		case 1000001:	character = 'A';
 						break;
@@ -226,16 +225,12 @@ void ToLetter(int binary[]){
 		case 1111010:	character = 'z';
 						break;
 	}
-	printf("%c", character);
 }
 
 int main(){
 	int i;
 	char letter = 'k';
 	ToBinary(letter);
-	for(i=0;i<8;i++){
-		printf("%d", binary[i]);
-	}
 	ToLetter(binary);
 	return 0;
 }

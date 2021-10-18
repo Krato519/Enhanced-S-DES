@@ -169,6 +169,8 @@ void SW(int text[]){
 }
 
 void fk(int iptext[], int subkey[]){
+	printf("\n\n");
+	printf("fk function being applied...");
 	int i;
 	for(i=0;i<4;i++){
 		first[i] = iptext[i];
@@ -186,10 +188,18 @@ void fk(int iptext[], int subkey[]){
 			ciphertext[i] = first[i];
 		else
 			ciphertext[i] = second[i-4];
-	}	  
+	}
+	printf("\n\n");
+	printf("fk result:");
+	printf("\n\n");	  
+	for(i=0;i<8;i++){
+		printf("%d", ciphertext[i]);
+	}
 }
 
 void EP(int expansion[], int R[]){
+	int i;
+	printf("\n\nExpanding Right side...");
     expansion[0] = R[3];
     expansion[1] = R[0];
     expansion[2] = R[1];
@@ -198,6 +208,10 @@ void EP(int expansion[], int R[]){
     expansion[5] = R[2];
     expansion[6] = R[3];
     expansion[7] = R[0];
+    printf("\n\n");
+    for(i=0;i<8;i++){
+    	printf("%d", expansion[i]);
+	}
 }
 
 void binaryTodecimal(int binary[]){
@@ -244,10 +258,18 @@ void decimalToBinary(int decimal){
 }
 
 void P4(int sbox[]){
+	printf("\n\nPermutating sbox result values...");
+	int i;
 	map_result[0] = sbox[1];
 	map_result[1] = sbox[3];
 	map_result[2] = sbox[2];
 	map_result[3] = sbox[0];
+	printf("\n\n");
+	printf("F mapping result:");
+	printf("\n\n");
+	for(i=0;i<4;i++){
+		printf("%d",map_result[i]);
+	}
 }
 
 void F_mapping(int R[], int SK[]){
