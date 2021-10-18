@@ -1,5 +1,6 @@
 #include <stdio.h>
-int binary[9];
+int binary[9], selection;
+char character;
 void ToBinary(char letter){
 	switch (letter){
 		case 'A': 	binary[0] = 0;binary[1] = 1;binary[2] = 0;binary[3] = 0;binary[4] = 0;binary[5] = 0;binary[6] = 0;binary[7] = 1;
@@ -106,17 +107,135 @@ void ToBinary(char letter){
 					break;
 		case 'z': 	binary[0] = 0;binary[1] = 1;binary[2] = 1;binary[3] = 1;binary[4] = 1;binary[5] = 0;binary[6] = 1;binary[7] = 0;
 					break;
-		default :	printf("Letter not recognized.");
-					
+		default :	printf("Letter not recognized.");				
 	}
+}
+
+void ToLetter(int binary[]){
+	selection += binary[7];
+	selection += binary[6]*10;
+	selection += binary[5]*100;
+	selection += binary[4]*1000;
+	selection += binary[3]*10000;
+	selection += binary[2]*100000;
+	selection += binary[1]*1000000;
+	printf("\n\n");
+	switch(selection){
+		case 1000001:	character = 'A';
+						break;
+		case 1000010:	character = 'B';
+						break;
+		case 1000011:	character = 'C';
+						break;
+		case 1000100:	character = 'D';
+						break;
+		case 1000101:	character = 'E';
+						break;
+		case 1000110:	character = 'F';
+						break;
+		case 1000111:	character = 'G';
+						break;
+		case 1001000:	character = 'H';
+						break;
+		case 1001001:	character = 'I';
+						break;
+		case 1001010:	character = 'J';
+						break;
+		case 1001011:	character = 'K';
+						break;
+		case 1001100:	character = 'L';
+						break;
+		case 1001101:	character = 'M';
+						break;
+		case 1001110:	character = 'N';
+						break;
+		case 1001111:	character = 'O';
+						break;
+		case 1010000:	character = 'P';
+						break;
+		case 1010001:	character = 'Q';
+						break;
+		case 1010010:	character = 'R';
+						break;
+		case 1010011:	character = 'S';
+						break;
+		case 1010100:	character = 'T';
+						break;
+		case 1010101:	character = 'U';
+						break;
+		case 1010110:	character = 'V';
+						break;
+		case 1010111:	character = 'W';
+						break;
+		case 1011000:	character = 'X';
+						break;
+		case 1011001:	character = 'Y';
+						break;
+		case 1011010:	character = 'Z';
+						break;
+		case 1100001:	character = 'a';
+						break;
+		case 1100010:	character = 'b';
+						break;
+		case 1100011:	character = 'c';
+						break;
+		case 1100100:	character = 'd';
+						break;
+		case 1100101:	character = 'e';
+						break;
+		case 1100110:	character = 'f';
+						break;
+		case 1100111:	character = 'g';
+						break;
+		case 1101000:	character = 'h';
+						break;
+		case 1101001:	character = 'i';
+						break;
+		case 1101010:	character = 'j';
+						break;
+		case 1101011:	character = 'k';
+						break;
+		case 1101100:	character = 'l';
+						break;
+		case 1101101:	character = 'm';
+						break;
+		case 1101110:	character = 'n';
+						break;
+		case 1101111:	character = 'o';
+						break;
+		case 1110000:	character = 'p';
+						break;
+		case 1110001:	character = 'q';
+						break;
+		case 1110010:	character = 'r';
+						break;
+		case 1110011:	character = 's';
+						break;
+		case 1110100:	character = 't';
+						break;
+		case 1110101:	character = 'u';
+						break;
+		case 1110110:	character = 'v';
+						break;
+		case 1110111:	character = 'w';
+						break;
+		case 1111000:	character = 'x';
+						break;
+		case 1111001:	character = 'y';
+						break;
+		case 1111010:	character = 'z';
+						break;
+	}
+	printf("%c", character);
 }
 
 int main(){
 	int i;
-	char letter = 'z';
+	char letter = 'k';
 	ToBinary(letter);
 	for(i=0;i<8;i++){
 		printf("%d", binary[i]);
 	}
+	ToLetter(binary);
 	return 0;
 }
